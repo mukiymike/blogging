@@ -6,11 +6,11 @@
 	require "connect.php";
 	//Sanitize the POST values
    if (isset($_POST['submit'])) {
-		$Name=$_POST['Name'];
 		$Email=$_POST['Email'];
+		$Name=$_POST['Name'];
 		
-		$submit="INSERT into subscribe (`Name`,`Email`,`Type`) 
-		          values ('$Name','$Email',2)";
+		$submit="INSERT into subscribe (`Email`,`Name`,`Type`) 
+		          values ('$Email','$Name',2)";
 		$submit_run=mysqli_query($conn,$submit);
 		if ($submit_run) {
 			echo '<div class="alert alert-success">Registration successful</div>';
