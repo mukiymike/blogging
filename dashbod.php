@@ -26,7 +26,7 @@
 			</li>
 
 			<li>
-				<a href="index.html">
+				<a href="admin.html">
 					<span>Blog</span>
 				</a>
 			</li>
