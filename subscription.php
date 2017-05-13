@@ -13,7 +13,7 @@
 		          values ('$Email','$Name',2)";
 		$submit_run=mysqli_query($conn,$submit);
 		if ($submit_run) {
-			echo '<div class="alert alert-success">Registration successful</div>';
+			echo '<div class="alert alert-success">You have subscribed successfully You will receive any updates</div>';
 		}
     else{
 			echo '<div class="alert alert-danger">could not register</div>';
