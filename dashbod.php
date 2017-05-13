@@ -33,9 +33,8 @@
 
 
 			<li>
-				<a href="#">
-					<span><i class="fa fa-trash"></i></span>
-					<span>Cancel Flights</span>
+				<a href="add-post.php">
+					<span>ADD POST</span>
 				</a>
 			</li>
 
