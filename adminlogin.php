@@ -55,6 +55,9 @@ else if (isset($_POST['register'])) {
   }
 
 ?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -113,6 +116,3 @@ else if (isset($_POST['register'])) {
 
 </body>
 </html>
-
-
-
