@@ -1,28 +1,4 @@
-<?php
-	//Start session
-	session_start();
-	
-	//Connect to mysql server
-	require "connect.php";
-	//Sanitize the POST values
-   if (isset($_POST['submit'])) {
-		$Email=$_POST['Email'];
-		$Name=$_POST['Name'];
-		
-		$submit="INSERT into subscribe (`Email`,`Name`,`Type`) 
-		          values ('$Email','$Name',2)";
-		$submit_run=mysqli_query($conn,$submit);
-		if ($submit_run) {
-			echo '<div class="alert alert-success">You have subscribed successfully You will receive any updates</div>';
-		}
-    else{
-			echo '<div class="alert alert-danger">could not register</div>';
-		 }
-	 
-  }
 
-?>
-	
 <!DOCTYPE html>
 <html lang="en-US">
    <head>
@@ -91,3 +67,28 @@
                                  </form>
    </body>
    </html>
+   <?php
+	//Start session
+	session_start();
+	
+	//Connect to mysql server
+	require "connect.php";
+	//Sanitize the POST values
+   if (isset($_POST['submit'])) {
+		$Email=$_POST['Email'];
+		$Name=$_POST['Name'];
+		
+		$submit="INSERT into subscribe (`Email`,`Name`,`Type`) 
+		          values ('$Email','$Name',2)";
+		$submit_run=mysqli_query($conn,$submit);
+		if ($submit_run) {
+			echo '<div class="alert alert-success">You have subscribed successfully You will receive any updates</div>';
+		}
+    else{
+			echo '<div class="alert alert-danger">could not register</div>';
+		 }
+	 
+  }
+
+?>
+	
