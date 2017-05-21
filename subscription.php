@@ -60,10 +60,10 @@
          </div>
       </header>
         <form class="customform" action="subscription.php" method="POST">
-                                 <div class="s-12"><input name="Email" placeholder="Email" title="Your e-mail" type="email" /></div>
-                                 <div class="s-12"><input name="Name" placeholder="Name" title="Your name" type="text" /></div>
+                                 <div class="s-8 "><input name="Email" placeholder="Email" title="Your e-mail" type="email" /></div>
+                                 <div class="s-8"><input name="Name" placeholder="Name" title="Your name" type="text" /></div>
                            
-                                 <input type="submit" name="submit" value="	submit"/>
+                                <div class="s-8"><input type="submit" name="submit" value="	submit"/>
                                  </form>
    </body>
    </html>
