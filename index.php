@@ -1,3 +1,4 @@
+<?php require('includes/connect.php'); ?>
 <!DOCTYPE html>
 <html lang="en-US">
    <head>
@@ -39,140 +40,67 @@
          <div class="margin">
             <!-- ARTICLES -->
             <div class="s-12 l-9">
-                           <!-- ARTICLE 1 -->
-               <article class="post-1 line">
-                  <!-- image -->
-                  <div class="s-12 l-6 post-image">
-                     <img src="img/IMG-20170511-WA0002.jpg" alt="Fashion 1">
-                     </a>
+            <?php
+                     try {
+                        // Displaying either text or image in functions for implementation in the design
+                        // display text
+                        function displayText($row, $postID, $postTitle, $postDesc, $postDate){
+                           echo '<div class = "s-12 l-5 post-text">';
+                              echo '<H2><a href="viewpost.php?id='.$row[$postID].'">'.$row[$postTitle].'</a></H2>';
+                              echo '<p>Posted on '.date('jS M', strtotime($row[$postDate])).'</p>';
+                              echo '<p>'.$row[$postDesc].'</p>';
+                              echo '<p><a class="continue-reading" href="viewpost.php?id='.$row[$postID].'">Continue Reading</a></p>';
+                           echo '</div>';
+                           echo '<div class="s-12 l-1 post-date">';
+                              echo '<p class="date">'.date('jS', strtotime($row[$postDate])).'</p>';
+                              echo '<p class="month">'.date('M', strtotime($row[$postDate])).'</p>';
+                           echo '</div>';
+                        }
 
-                  </div>
-                  <!-- text -->
-                  <div class="s-12 l-5 post-text">
-                     <a href="post-1.html">
-                     </a>
-                     <H2>Multimedia University</H2>
-                     <p>Multimedia Shadows is the first and only Multimedia University entertainment blog.This is the realest site that posts on what is hot and trending in MMU Kenya.</p>
+                        // display image
+                        function displayImage(){
+                           echo '<div class="s-12 l-6 post-image">';
+                              echo '<a href = "#">';
+                              echo '<img src="img/IMG-20170511-WA0002.jpg" alt="Fashion 1">';
+                              echo '</a>';
+                           echo '</div>';
+                        }
 
-                  </div>
+                        // Fetching posts from database and displaying.
+                        $stmt = $db->query('SELECT postID, postTitle, postDesc, postDate FROM blog_posts ORDER BY postID DESC');
+                        while($row = $stmt->fetch()){
+                           // Manipulating classes for cool CSS
+                           $postID = $row[postID];
+                           if ($row[postID] > 4) {
+                              $postID = $row[postID] % 5 + 1;
+                           }
 
-               <!-- ARTICLE 2-->
-               <article class="post-1 line">
-                  <!-- image -->
+                           // Alignment for the images
+                           $alignment = 'left-align';
+                           if ($postID % 2 == 0) {
+                              // Display image with text alongside
+                              $alignment = 'right-align';
+                           }
 
-               <article class="post-2 right-align line">
-                  <div class="s-12 l-6 post-image">
-                     <a href="post-1.html">
-                     <img src="img/IMG-20170519-WA0057.jpg" alt="Fashion 1">
-                     </a>
 
-                  </div>
-                  <!-- text -->
-                  <div class="s-12 l-5 post-text">
-                     <a href="post-1.html">
-                        <h2>Multimedia Top Ten Finest Divas</h2>
-                     </a>
-                     <p> With its high number of diverse courses Multimedia University of Kenya has many Pretty divas who not only have the most beautiful faces but also the cut edging curves.... </p>
-                     <a class="continue-reading" href="post-1.html">Continue reading</a>
+                           // Outputting articles
+                           echo '<article class="post-'.$postID.' line '.$alignment.'">';
+                           echo $row[postID];
+                           echo $postID;
+                           // Display image
+                           displayImage();
+                           // Display text
+                           displayText($row, postID, postTitle, postDesc, postDate);
+                           echo '</article>';
 
-                  </div>
-                  <!-- date -->
-                 <!-- date -->
-                  <div class="s-12 l-1 post-date">
-                     <p class="date">03</p>
-                     <p class="month">June</p>
-                  </div>
-               </article>
+                        }
 
-               <!-- ARTICLE 2 -->
-               <article class="post-2 left-align line">
-                  <!-- image -->
-                  <div class="s-12 l-6 post-image">
-                     <a href="post-2.html">
-                     <img src="img/post2.jpg" alt="fashion2.jpg">
-                     </a>
-                  </div>
-                  <!-- text -->
-                  <div class="s-12 l-5 post-text">
-                     <a href="post-2.html">
-                        <h2>Trend Setters</h2>
-                     </a>
-                     <p>These gentlemen and ladies define the elegance of dressing and they bring out the new sence of fashion in the vicinity of the campus.  </p>
-                     <a class="continue-reading" href="post-2.html">Continue reading</a>
+                     } catch(PDOException $e) {
+                         echo $e->getMessage();
+                     }
+                  ?>
 
-                  </div>
-                  <!-- date -->
-                  <!-- date -->
-                  <div class="s-12 l-1 post-date">
-                     <p class="date">03</p>
-                     <p class="month">June</p>
-                  </div>
 
-               </article>
-
-               <!-- ARTICLE 3 -->
-               <article class="post-3 line">
-                  <!-- image -->
-
-               <article class="post-3 right-align line">
-                  <div class="s-12 l-6 post-image">
-                     <a href="post-3.html">
-                     <img src="img/DonCliq_Photography Fam 20170519_151807.jpg" alt="Fashion 3">
-                     </a>
-                  </div>
-                  <!-- text -->
-                  <div class="s-12 l-5 post-text">
-                     <a href="post-3.html">
-                        <h2>Finest Photography</h2>
-                     </a>
-                     <p>Ever found a hard time looking for the perfect photographers?MMU Shadows gives you a top list of the three finest photographers to choose from.</p>
-                               <a class="continue-reading" href="post-3.html">Continue reading</a>
-                  </div>
-                  <!-- date -->
-                  <div class="s-12 l-1 post-date">
-                     <p class="date">03</p>
-                     <p class="month">June</p>
-                  </div>
-               </article>
-
-               <!-- ARTICLE 4 -->
-               <article class="post-4 left-align line">
-                  <!-- image -->
-                  <div class="s-12 l-6 post-image">
-                     <a href="post-4.html">
-                     <img src="img/mercy wekesa 20170519_151743.jpg" alt="Fashion 4">
-                     </a>
-                  </div>
-                  <!-- text -->
-                  <div class="s-12 l-5 post-text">
-                     <a href="post-4.html">
-                        <h2>Multimedia Forbes List</h2>
-                     </a>
-                     <p>Ever thought of the richest kids in the campus, shadows gives you the insight of the students who source out their cash from different sources.</p>
-                     <a class="continue-reading" href="post-4.html">Continue reading</a>
-                  </div>
-                  <article class="post-3 right-align line">
-                  <div class="s-12 l-6 post-image">
-                     <a href="post-5.html">
-                     <img src="img/IMG-20170519-WA045.jpg" alt="Fashion 3">
-                     </a>
-                  </div>
-                  <!-- text -->
-                  <div class="s-12 l-5 post-text">
-                     <a href="post-3.html">
-                        <h2>Finest Hunks</h2>
-                     </a>
-                     <p>Ladies we bring you the hottest gentlemen in the campus.</p>
-                               <a class="continue-reading" href="post-5.html">Continue reading</a>
-                  </div>
-                  <!-- date -->
-                  <div class="s-12 l-1 post-date">
-                     <p class="date">03</p>
-                     <p class="month">June</p>
-                  </div>
-               </article>
-
-               </article>
 
                <!-- ARTICLE 5 -->
                <article class="post-5 line">
