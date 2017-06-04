@@ -34,7 +34,7 @@ if(isset($_GET['delpost'])){
 <body>
 
 	<div id="wrapper">
-
+	<?php $active = "blog" ?>
 	<?php include("includes/segments/navigationBar.php");?>
 
 	<?php
