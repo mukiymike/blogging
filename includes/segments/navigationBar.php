@@ -4,13 +4,13 @@
             <nav>
                <div class="top-nav">
                   <p class="nav-text"></p>
-                  <a class="logo" href="index.html">
+                  <a class="logo" href="index.php">
                   Multimedia<span>Shadows</span>
                   </a>
                   <h1>Multimedia Sensation</h1>
                   <ul class="top-ul right">
                      <li>
-                        <a href="index.html">Blog</a>
+                        <a href="index.php">Blog</a>
                      </li>
                      <li>
                         <a href="about.html">Trending</a>
