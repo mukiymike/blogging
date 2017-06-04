@@ -39,7 +39,7 @@
       <section id="home-section" class="line">
          <div class="margin">
             <!-- ARTICLES -->
-            <div class="s-12 l-9">
+         <div class="s-12 l-9">
             <?php
                      try {
                         // Displaying either text or image in functions for implementation in the design
@@ -52,7 +52,7 @@
                               echo '<p><a class="continue-reading" href="viewpost.php?id='.$row[$postID].'">Continue Reading</a></p>';
                            echo '</div>';
                            echo '<div class="s-12 l-1 post-date">';
-                              echo '<p class="date">'.date('jS', strtotime($row[$postDate])).'</p>';
+                              echo '<p class="date">'.date('d', strtotime($row[$postDate])).'</p>';
                               echo '<p class="month">'.date('M', strtotime($row[$postDate])).'</p>';
                            echo '</div>';
                         }
@@ -71,7 +71,7 @@
                         while($row = $stmt->fetch()){
                            // Manipulating classes for cool CSS
                            $postID = $row[postID];
-                           if ($row[postID] > 4) {
+                           if ($row[postID] > 5) {
                               $postID = $row[postID] % 5 + 1;
                            }
 
@@ -119,7 +119,7 @@
                   </div>
 
                </article>
-            </div>
+         </div>
 
 
             <!-- SIDEBAR -->
