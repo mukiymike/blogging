@@ -31,12 +31,11 @@ if( $user->is_logged_in() ){ header('Location: index.php'); }
 
 
 		} else {
-			$message = '<p class="error">Wrong username or password</p>';
+			$message = 'Wrong username or password';
 		}
 
 	}//end if submit
 
-	if(isset($message)){ echo $message; }
 	?>
 <br><center><h2>Multimedia Shadows - Admin Section</h2></center><hr>
 <div class="container">
@@ -44,6 +43,13 @@ if( $user->is_logged_in() ){ header('Location: index.php'); }
         <div class="col-md-3 col-sm-12 col-xs-12">
         </div>
         <div class="col-md-6 col-sm-12 col-xs-12">
+           <?php
+           if(isset($message)){
+       	echo '<div class="alert alert-danger">';
+	echo '<strong><center>'.$message.'.</center></strong>';
+	echo '</div>';
+	}
+	?>
           <!--Log in Form-->
           <div class="panel panel-info">
             <div class="panel-heading">Please Log in First.</div>
