@@ -5,7 +5,7 @@
    <title> Multimedia Shadows </title>
 
    <?php
-   include "includes/segments/metaEnLinks.php";
+   include("includes/segments/metaEnLinks.php");
    ?>
 
    <!-- PageSpeed and Google Ads. -->
