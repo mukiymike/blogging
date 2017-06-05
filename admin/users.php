@@ -6,7 +6,7 @@ require_once('../includes/connect.php');
 if(!$user->is_logged_in()){ header('Location: login.php'); }
 
 //show message from add / edit page
-if(isset($_GET['deluser'])){ 
+if(isset($_GET['deluser'])){
 
 	//if user id is 1 ignore
 	if($_GET['deluser'] !='1'){
@@ -18,7 +18,7 @@ if(isset($_GET['deluser'])){
 		exit;
 
 	}
-} 
+}
 
 ?>
 <!doctype html>
@@ -39,17 +39,16 @@ if(isset($_GET['deluser'])){
 <body>
     <?php include("includes/segments/navigationBar.php"); ?>
 
-	<div id="wrapper">
-
-	<?php include('menu.php');?>
-
-	<?php 
-	//show message from add / edit page
-	if(isset($_GET['action'])){ 
-		echo '<h3>User '.$_GET['action'].'.</h3>'; 
-	} 
-	?>
+<div id="wrapper">
     <div class="container">
+	<?php
+		//show message from add / edit page
+		if(isset($_GET['action'])){
+			echo '<div class="alert alert-info">';
+			  echo '<strong><center>User '.$_GET['action'].'.</center></strong>';
+			echo '</div>';
+		}
+	?>
 	<table class="table table-striped table-hover table-bordered">
 	<tr>
 		<th>Username</th>
@@ -61,20 +60,20 @@ if(isset($_GET['deluser'])){
 
 			$stmt = $db->query('SELECT memberID, username, email FROM blog_members ORDER BY username');
 			while($row = $stmt->fetch()){
-				
+
 				echo '<tr>';
 				echo '<td>'.$row['username'].'</td>';
 				echo '<td>'.$row['email'].'</td>';
 				?>
 
 				<td>
-					<a href="edit-user.php?id=<?php echo $row['memberID'];?>">Edit</a> 
+					<a href="edit-user.php?id=<?php echo $row['memberID'];?>">Edit</a>
 					<?php if($row['memberID'] != 1){?>
 						| <a href="javascript:deluser('<?php echo $row['memberID'];?>','<?php echo $row['username'];?>')">Delete</a>
 					<?php } ?>
 				</td>
-				
-				<?php 
+
+				<?php
 				echo '</tr>';
 
 			}
