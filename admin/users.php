@@ -67,7 +67,7 @@ if(isset($_GET['deluser'])){
 				?>
 
 				<td>
-					<?php if($row['memberID'] != 1){?>
+					<?php if($row['memberID'] > 2 ){?>
 					<a href="edit-user.php?id=<?php echo $row['memberID'];?>">Edit</a> | <a href="javascript:deluser('<?php echo $row['memberID'];?>','<?php echo $row['username'];?>')">Delete</a>
 					<?php } else { echo "Super User";}?>
 				</td>
