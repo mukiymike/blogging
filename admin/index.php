@@ -37,13 +37,15 @@ if(isset($_GET['delpost'])){
 	<?php $active = "blog" ?>
 	<?php include("includes/segments/navigationBar.php");?>
 
-	<?php
-	//show message from add / edit page
-	if(isset($_GET['action'])){
-		echo '<h3>Post '.$_GET['action'].'.</h3>';
-	}
-	?>
 	<div class="container">
+	<?php
+		//show message from add / edit page
+		if(isset($_GET['action'])){
+			echo '<div class="alert alert-info">';
+			  echo '<strong><center>Post has been '.$_GET['action'].'.</center></strong>';
+			echo '</div>';
+		}
+	?>
 	<table class="table  table-striped  table-bordered table-hover">
 	<tr>
 		<th>Article Title</th>
@@ -77,7 +79,7 @@ if(isset($_GET['delpost'])){
 	?>
 	</table>
 
-	<p><a href='add-post.php'>Add Post</a></p>
+	<p><a href='add-post.php' class="btn btn-success">Add Post</a></p>
 	</div>
 
 </div>
