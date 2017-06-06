@@ -45,12 +45,14 @@
                         // Displaying either text or image in functions for implementation in the design
                         // display text
                         function displayText($row, $postID, $postTitle, $postDesc, $postDate){
+                           // The Text
                            echo '<div class = "s-12 l-5 post-text">';
                               echo '<H2><a href="viewpost.php?id='.$row[$postID].'">'.$row[$postTitle].'</a></H2>';
                               echo '<p>Posted on '.date('jS M', strtotime($row[$postDate])).'</p>';
                               echo '<p>'.$row[$postDesc].'</p>';
                               echo '<p><a class="continue-reading" href="viewpost.php?id='.$row[$postID].'">Continue Reading</a></p>';
                            echo '</div>';
+                           // Display Date
                            echo '<div class="s-12 l-1 post-date">';
                               echo '<p class="date">'.date('d', strtotime($row[$postDate])).'</p>';
                               echo '<p class="month">'.date('M', strtotime($row[$postDate])).'</p>';
@@ -85,8 +87,6 @@
 
                            // Outputting articles
                            echo '<article class="post-'.$postID.' line '.$alignment.'">';
-                           echo $row['postID'];
-                           echo $postID;
                            // Display image
                            displayImage();
                            // Display text
