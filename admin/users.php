@@ -37,7 +37,10 @@ if(isset($_GET['deluser'])){
   </script>
 </head>
 <body>
-    <?php include("includes/segments/navigationBar.php"); ?>
+    <?php
+    $active = 'users';
+     include("includes/segments/navigationBar.php");
+     ?>
 
 <div id="wrapper">
     <div class="container">

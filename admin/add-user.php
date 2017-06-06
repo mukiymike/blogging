@@ -14,7 +14,10 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 
 <div id="wrapper">
 
-    <?php include("includes/segments/navigationBar.php"); ?>
+    <?php
+    $active = 'users';
+     include("includes/segments/navigationBar.php");
+     ?>
 
     <section>
     <div class="container">
