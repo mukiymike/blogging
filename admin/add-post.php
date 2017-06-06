@@ -34,7 +34,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 	<a href="./" class="btn btn-default">Blog Admin Index</a>
 
 	<h2><center>Post Publication Arena - Where stuff cooks.</center></h2><hr>
-
+    </div>
 	<?php
 
 	//if form has been submitted process it
@@ -117,5 +117,4 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
             <div class="panel-footer alert-danger"><strong>Once it's online, you're accountable!</strong><br>Any posts you publish on this blog will have that additional clause of published by YOU.</div>
           </div>
         </div>
-    </div>
 </div>
