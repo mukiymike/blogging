@@ -70,9 +70,9 @@
                         $stmt = $db->query('SELECT postID, postTitle, postDesc, postDate FROM blog_posts ORDER BY postID DESC');
                         while($row = $stmt->fetch()){
                            // Manipulating classes for cool CSS
-                           $postID = $row[postID];
-                           if ($row[postID] > 5) {
-                              $postID = $row[postID] % 5 + 1;
+                           $postID = $row['postID'];
+                           if ($row['postID'] > 5) {
+                              $postID = $row['postID'] % 5 + 1;
                            }
 
                            // Alignment for the images
@@ -85,12 +85,12 @@
 
                            // Outputting articles
                            echo '<article class="post-'.$postID.' line '.$alignment.'">';
-                           echo $row[postID];
+                           echo $row['postID'];
                            echo $postID;
                            // Display image
                            displayImage();
                            // Display text
-                           displayText($row, postID, postTitle, postDesc, postDate);
+                           displayText($row, 'postID', 'postTitle', 'postDesc', 'postDate');
                            echo '</article>';
 
                         }
