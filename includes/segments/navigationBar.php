@@ -19,7 +19,7 @@
                         <a href="event.html">Events</a>
                      </li>
                      <li>
-                        <a href=".php">Login</a>
+                        <a href="admin/">Login</a>
                      </li>
 
                       <div class="social right">
