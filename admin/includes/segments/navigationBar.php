@@ -48,7 +48,7 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="users.php">Blog Admins.<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="users.php">Blog Admins Index.</a></li>
-            <li><a href="add-post.php">Add New Admin.</a></li>
+            <li><a href="add-user.php">Add New Admin.</a></li>
           </ul>
         </li>
       </ul>
