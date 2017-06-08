@@ -62,6 +62,9 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 
 			try {
 
+                        // Upload image
+                        include("uploadImg.php");
+
 				//insert into database
 				$stmt = $db->prepare('INSERT INTO blog_posts (postTitle,postDesc,postCont,postDate) VALUES (:postTitle, :postDesc, :postCont, :postDate)') ;
 				$stmt->execute(array(
@@ -98,10 +101,14 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
           <div class="panel panel-info">
             <div class="panel-heading"><center>What's Happening? 'Leta Maneno! Tunapenda Mushene..'</center></div>
             <div class="panel-body">
-            <form role="form" action="" method="POST">
+            <form role="form" action="" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                   <label for="postTitle">Post Title: (Two to three words)</label>
                   <input type="text" class="form-control" required="required" name='postTitle' placeholder="Shorter Titles are the best." value='<?php if(isset($error)){ echo $_POST['postTitle'];}?>'>
+                </div>
+                <div class="form-group">
+                  <label for="headLineImg">Headline Image.</label>
+                  <input type="file" class="form-control" required="required" name='fileToUpload'  id = "fileToUpload" placeholder="Select Headline Image" value='<?php if(isset($error)){ echo "Select Image.";}?>'>
                 </div>
                 <div class="form-group">
                   <label for="postDesc">Post Headlines: (A short post description, maybe only the first two lines of the post.)</label>
