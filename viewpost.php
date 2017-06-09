@@ -1,6 +1,6 @@
 <?php require('includes/connect.php');
 
-$stmt = $db->prepare('SELECT postID, postTitle, postCont, postDate FROM blog_posts WHERE postID = :postID');
+$stmt = $db->prepare('SELECT postID, postImg, postTitle, postCont, postDate FROM blog_posts WHERE postID = :postID');
 $stmt->execute(array(':postID' => $_GET['id']));
 $row = $stmt->fetch();
 
@@ -58,7 +58,7 @@ if($row['postID'] == ''){
                     ?>
                      <!-- image -->
                      <div class="s-12 l-11 post-image">
-                        <img src="img/post4-big.jpg" alt="Fashion">
+                        <?php echo '<img src="'.$row['postImg'].'" alt="MMU Shadows." style="max-height: 600px;">'; ?>
                      </div>
                      <?php
                         echo '<div class="s-12 l-1 post-date">';
