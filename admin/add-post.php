@@ -66,9 +66,12 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                         include("uploadImg.php");
 
 				//insert into database
-				$stmt = $db->prepare('INSERT INTO blog_posts (postTitle,postDesc,postCont,postDate) VALUES (:postTitle, :postDesc, :postCont, :postDate)') ;
+                        $imgUploadDir = "uploads/";
+                        $pathToImg = $imgUploadDir. basename($_FILES["fileToUpload"]["name"]);
+				$stmt = $db->prepare('INSERT INTO blog_posts (postTitle,postImg,postDesc,postCont,postDate) VALUES (:postTitle, :postImg, :postDesc, :postCont, :postDate)') ;
 				$stmt->execute(array(
 					':postTitle' => $postTitle,
+                              ':postImg' => $pathToImg,
 					':postDesc' => $postDesc,
 					':postCont' => $postCont,
 					':postDate' => date('Y-m-d H:i:s')
@@ -108,7 +111,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                 </div>
                 <div class="form-group">
                   <label for="headLineImg">Headline Image.</label>
-                  <input type="file" class="form-control" required="required" name='fileToUpload'  id = "fileToUpload" placeholder="Select Headline Image" value='<?php if(isset($error)){ echo "Select Image.";}?>'>
+                  <input type="file" class="form-control" required="required" name='fileToUpload'  id = "fileToUpload">
                 </div>
                 <div class="form-group">
                   <label for="postDesc">Post Headlines: (A short post description, maybe only the first two lines of the post.)</label>
