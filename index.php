@@ -45,6 +45,11 @@
                         // Displaying either text or image in functions for implementation in the design
                         // display text
                         function displayText($row, $postID, $postTitle, $postDesc, $postDate){
+                           // Display Date
+                           echo '<div class="s-12 l-1 post-date">';
+                              echo '<p class="date">'.date('d', strtotime($row[$postDate])).'</p>';
+                              echo '<p class="month">'.date('M', strtotime($row[$postDate])).'</p>';
+                           echo '</div>';
                            // The Text
                            echo '<div class = "s-12 l-5 post-text">';
                               echo '<H2><a href="viewpost.php?id='.$row[$postID].'">'.$row[$postTitle].'</a></H2>';
@@ -52,24 +57,19 @@
                               echo '<p>'.$row[$postDesc].'</p>';
                               echo '<p><a class="continue-reading" href="viewpost.php?id='.$row[$postID].'">Continue Reading</a></p>';
                            echo '</div>';
-                           // Display Date
-                           echo '<div class="s-12 l-1 post-date">';
-                              echo '<p class="date">'.date('d', strtotime($row[$postDate])).'</p>';
-                              echo '<p class="month">'.date('M', strtotime($row[$postDate])).'</p>';
-                           echo '</div>';
                         }
 
                         // display image
-                        function displayImage(){
+                        function displayImage($row, $postImg){
                            echo '<div class="s-12 l-6 post-image">';
                               echo '<a href = "#">';
-                              echo '<img src="img/IMG-20170511-WA0002.jpg" alt="Fashion 1">';
+                              echo '<img src="'.$row[$postImg].'" alt="MMU Shadows" style="max-height: 450px;">';
                               echo '</a>';
                            echo '</div>';
                         }
 
                         // Fetching posts from database and displaying.
-                        $stmt = $db->query('SELECT postID, postTitle, postDesc, postDate FROM blog_posts ORDER BY postID DESC');
+                        $stmt = $db->query('SELECT postID, postImg, postTitle, postDesc, postDate FROM blog_posts ORDER BY postID DESC');
                         while($row = $stmt->fetch()){
                            // Manipulating classes for cool CSS
                            $postID = $row['postID'];
@@ -88,7 +88,7 @@
                            // Outputting articles
                            echo '<article class="post-'.$postID.' line '.$alignment.'">';
                            // Display image
-                           displayImage();
+                           displayImage($row,'postImg');
                            // Display text
                            displayText($row, 'postID', 'postTitle', 'postDesc', 'postDate');
                            echo '</article>';
