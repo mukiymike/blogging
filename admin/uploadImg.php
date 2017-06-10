@@ -15,14 +15,10 @@ if(isset($_POST["submit"])) {
     }
 }
 
+
 // Check if image already exists and replace it for editing
 if (file_exists($target_file)) {
     unlink($target_file);
-    echo 'File '.$target_file.' has been deleted';
-    $uploadOk = 1;
-  }else{
-    $error[] = "There was an error while trying to update the image. Please try again or call Lemayian, the admin.";
-    $uploadOk = 0;
   }
 
 // Check file size
@@ -38,13 +34,13 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 }
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
-    $error[] = "Sorry, your file was not uploaded.";
+    $error[] = "Sorry, there was an error uploading the headline image. It has not been uploaded and you cannot post without a headline image. Please try again.";
 // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
     } else {
-        $error[] = "Sorry, there was an error uploading your file. Please try again.";
+        $error[] = "Sorry, there was an error uploading the headline image. It has not been uploaded and you cannot post without a headline image. Please try again.";
     }
 }
 ?>
