@@ -62,14 +62,20 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 			$error[] = 'Please enter the content.';
 		}
 
+                         // Upload image
+                        include("uploadImg.php");
+
 		if(!isset($error)){
 
 			try {
 
 				//insert into database
-				$stmt = $db->prepare('UPDATE blog_posts SET postTitle = :postTitle, postDesc = :postDesc, postCont = :postCont WHERE postID = :postID') ;
+                                                $imgUploadDir = "uploads/";
+                                                $pathToImg = $imgUploadDir. basename($_FILES["fileToUpload"]["name"]);
+				$stmt = $db->prepare('UPDATE blog_posts SET postTitle = :postTitle, postImg = :postImg, postDesc = :postDesc, postCont = :postCont WHERE postID = :postID') ;
 				$stmt->execute(array(
 					':postTitle' => $postTitle,
+                                                            ':postImg' => $pathToImg,
 					':postDesc' => $postDesc,
 					':postCont' => $postCont,
 					':postID' => $postID
@@ -89,28 +95,8 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 
 	?>
 
-
-	<?php
-	//check for any errors
-	if(isset($error)){
-		foreach($error as $error){
-			echo $error.'<br />';
-		}
-	}
-
-		try {
-
-			$stmt = $db->prepare('SELECT postID, postTitle, postDesc, postCont FROM blog_posts WHERE postID = :postID') ;
-			$stmt->execute(array(':postID' => $_GET['id']));
-			$row = $stmt->fetch();
-
-		} catch(PDOException $e) {
-		    echo $e->getMessage();
-		}
-
-	?>
 	<div class="col-md-12 col-sm-12 col-xs-12">
-        <?php
+<?php
         //check for any errors and display them.
     if(isset($error)){
         foreach($error as $error){
@@ -119,16 +105,30 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
             echo '</div>';
         }
     }
-    ?>
+        try {
+
+            $stmt = $db->prepare('SELECT postID, postTitle, postDesc, postCont FROM blog_posts WHERE postID = :postID') ;
+            $stmt->execute(array(':postID' => $_GET['id']));
+            $row = $stmt->fetch();
+
+        } catch(PDOException $e) {
+            echo $e->getMessage();
+        }
+
+?>
           <!--Post Editing Form-->
           <div class="panel panel-info">
             <div class="panel-heading"><center>What's Happening? 'Leta Maneno! Tunapenda Mushene..'</center></div>
             <div class="panel-body">
-            <form role="form" action="" method="POST">
+            <form role="form" action="" method="POST" enctype="multipart/form-data">
             <input type='hidden' name='postID' value='<?php echo $row['postID'];?>'>
                 <div class="form-group">
                   <label for="postTitle">Post Title: (Two to three words)</label>
                   <input type="text" class="form-control" required="required" name='postTitle' placeholder="Shorter Titles are the best." value='<?php echo $row['postTitle'];?>'>
+                </div>
+                <div class="form-group">
+                  <label for="headLineImg">Headline Image.</label>
+                  <input type="file" class="form-control" required="required" name='fileToUpload'  id = "fileToUpload">
                 </div>
                 <div class="form-group">
                   <label for="postDesc">Post Headlines: (A short post description, maybe only the first two lines of the post.)</label>
@@ -141,7 +141,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                 <button type="submit" class="btn btn-block btn-info" name="submit">Publish Edits Online!</button>
             </form>
             </div>
-            <div class="panel-footer alert-danger"><strong>Once it's online, you're accountable!</strong><br>Any posts you publish on this blog will have that additional clause of published by YOU.</div>
+            <div class="panel-footer alert-danger"><strong>Once it's online, you're accountable!</strong><br>Any posts you publish on this blog will have that additional clause of published by YOU. Feature coming soon.</div>
           </div>
         </div>
 
