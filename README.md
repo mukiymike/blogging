@@ -13,11 +13,11 @@ This blog initially showcases:
 - University *gossip*
 
 ### Live Serve
-You can view the live version on production @ [coming soon]
+You can view the live version on production @ [mmushadows.info](http://www.mmushadows.info)
 
 
 ### Contributing
 We're open-source! We're waiting for your Pull Request!
 
 ### Development Stack
-We are starting out in raw php as we decide on the future of moving into either a **Python Django stack** or a **PHP Laravel stack**. Contribution in these lines will be highly appreciated.
+We are starting out in **raw php** as we decide on the future of moving into either a **Python Django stack** or a **PHP Laravel stack**. Contribution in these lines will be highly appreciated.
