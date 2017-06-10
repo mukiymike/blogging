@@ -102,7 +102,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
     ?>
           <!--Post Editing Form-->
           <div class="panel panel-info">
-            <div class="panel-heading"><center>What's Happening? 'Leta Maneno! Tunapenda Mushene..'</center></div>
+            <div class="panel-heading"><center>What's Happening? 'Leta Maneno! Tunapenda Uhondo...'</center></div>
             <div class="panel-body">
             <form role="form" action="" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
@@ -124,7 +124,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
                 <button type="submit" class="btn btn-block btn-info" name="submit">Publish Online!</button>
             </form>
             </div>
-            <div class="panel-footer alert-danger"><strong>Once it's online, you're accountable!</strong><br>Any posts you publish on this blog will have that additional clause of published by YOU.</div>
+            <div class="panel-footer alert-danger"><strong>Once it's online, you're accountable!</strong><br>Any posts you publish on this blog will have that additional clause of published by YOU. Feature coming soon.</div>
           </div>
         </div>
 </div>
