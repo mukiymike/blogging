@@ -58,12 +58,12 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 			$error[] = 'Please enter the content.';
 		}
 
+            // Upload image
+            include("uploadImg.php");
+
 		if(!isset($error)){
 
 			try {
-
-                        // Upload image
-                        include("uploadImg.php");
 
 				//insert into database
                         $imgUploadDir = "uploads/";
